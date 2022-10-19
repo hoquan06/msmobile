@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="col-md-12">
-        <div class="main-card mb-3 card">
+        <div class="main-card mb-3 git card">
             <div class="card-body">
                 <form class="" id="formCreate">
                     <div class="row">

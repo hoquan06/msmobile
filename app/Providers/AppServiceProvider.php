@@ -23,16 +23,16 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    // {
-    //     $menuCha = DanhMucSanPham::where('id_danh_muc_cha', 0)
-    //                              ->where('is_open', 1)
-    //                              ->get();
-    //     $menuCon = DanhMucSanPham::where('id_danh_muc_cha', '<>', 0)
-    //                              ->where('is_open', 1)
-    //                              ->get();
+    {
+        // $menuCha = DanhMucSanPham::where('id_danh_muc_cha', 0)
+        //                          ->where('is_open', 1)
+        //                          ->get();
+        // $menuCon = DanhMucSanPham::where('id_danh_muc_cha', '<>', 0)
+        //                          ->where('is_open', 1)
+        //                          ->get();
 
-    //     view()->share('menuCha', $menuCha);
-    //     view()->share('menuCon', $menuCon);
+        // view()->share('menuCha', $menuCha);
+        // view()->share('menuCon', $menuCon);
 
         // foreach($menuCha as $key => $value_cha) {
         //     $value_cha->tmp = $value_cha->id;
