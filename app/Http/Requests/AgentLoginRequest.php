@@ -28,4 +28,19 @@ class AgentLoginRequest extends FormRequest
             'password'  =>  'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'required'      =>  ':attribute không được để trống',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'email'             =>  'Email',
+            'password'          =>  'Mật khẩu',
+        ];
+    }
 }

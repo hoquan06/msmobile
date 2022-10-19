@@ -58,7 +58,7 @@
                                     <button id="register" type="button" class="btn btn-fill-out btn-block">Đăng ký</button>
                                 </div>
                                 <div class="different_login">
-                                    <span> or</span>
+                                    <span> hoặc</span>
                                 </div>
                                 <ul class="btn-login list_none text-center">
                                     <li><a href="#" class="btn btn-facebook"><i class="ion-social-facebook"></i>Facebook</a></li>

@@ -56,11 +56,6 @@ Route::group(['prefix' => '/admin'], function() {
         Route::get('/create', [\App\Http\Controllers\KhoHangController::class, 'create']);
     });
 
-    Route::group(['prefix' => '/cau-hinh'], function() {
-        Route::get('/', [\App\Http\Controllers\ConfigController::class, 'index']);
-        Route::post('/', [\App\Http\Controllers\ConfigController::class, 'store']);
-    });
-
 });
 Route::get('/agent/register', [\App\Http\Controllers\AgentController::class, 'register']);
 Route::post('/agent/register', [\App\Http\Controllers\AgentController::class, 'registerAction']);
@@ -79,3 +74,5 @@ Route::get('/cart/data', [\App\Http\Controllers\ChiTietDonHangController::class,
 Route::post('/add-to-cart-update', [\App\Http\Controllers\ChiTietDonHangController::class, 'addToCartUpdate']);
 Route::post('/remove-cart', [\App\Http\Controllers\ChiTietDonHangController::class, 'removeCart']);
 Route::get('/create-bill', [\App\Http\Controllers\DonHangController::class, 'store']);
+Route::post('/subscribe', [\App\Http\Controllers\SubscribeEmailController::class, 'create']);
+

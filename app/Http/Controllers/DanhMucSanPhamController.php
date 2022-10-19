@@ -18,17 +18,9 @@ class DanhMucSanPhamController extends Controller
 
     public function store(CreateDanhMucSanPhamRequest $request)
     {
-        DanhMucSanPham::create([
-            'ten_danh_muc'      =>  $request->ten_danh_muc,
-            'slug_danh_muc'     =>  $request->slug_danh_muc,
-            'hinh_anh'          =>  $request->hinh_anh,
-            'id_danh_muc_cha'   =>  empty($request->id_danh_muc_cha) ? 0 : $request->id_danh_muc_cha,
-            'is_open'           =>  $request->is_open,
-        ]);
-        // $data = $request->all();
-        // DanhMucSanPham::create($data);
-        // toastr()->success("Đã thêm mới thành công!!!");
-        // return redirect('admin/danh-muc-san-pham/index');
+        $data = $request->all();
+        DanhMucSanPham::create($data);
+
         return response()->json([
             'trangThai'         =>  true,
         ]);

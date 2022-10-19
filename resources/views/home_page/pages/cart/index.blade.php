@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-md-6">
                     <ol class="breadcrumb justify-content-md-end">
-                        <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
+                        <li class="breadcrumb-item"><a href="/">Trang Chủ</a></li>
                         <li class="breadcrumb-item active">Giỏ hàng</li>
                     </ol>
                 </div>
@@ -358,7 +358,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <a href="#" class="btn btn-fill-out" v-on:click="createBill()">Mua hàng</a>
+                            <a class="btn btn-fill-out" v-on:click="createBill()">Mua hàng</a>
                         </div>
                     </div>
                 </div>
@@ -419,10 +419,13 @@
                         .then((res) => {
                             if(res.data.status == 1){
                                 toastr.success("Đã tạo đơn hàng thành công");
+                                setTimeout(function(){
+                                    $(location).attr('href','/cart');;
+                                }, 2000);
                             }else if(res.data.status == 2){
-                                toastr.error("Đã có lỗi xảy ra!");
+                                toastr.error("Giỏ hàng rỗng!");
                             }else{
-                                toastr.warning("Giỏ hàng bị rỗng!");
+                                toastr.warning("Đã có lỗi xảy ra!");
                             }
                         });
                 }

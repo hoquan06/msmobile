@@ -15,7 +15,7 @@
     <div class="main_content">
 
     <div class="section">
-        <div class="container">
+        <div class="container" id="app">
             <div class="row">
                 <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
                 <div class="product-image">
@@ -86,13 +86,13 @@
                         </div>
                         <hr />
                         <div class="cart_extra">
+                            <template v-for="(value, key) in listCart">
                             <div class="cart-product-quantity">
                                 <div class="quantity">
-                                    <input type="button" value="-" class="minus">
-                                    <input type="text" name="quantity" value="1" title="changeQty" class="qty" size="4">
-                                    <input type="button" value="+" class="plus">
+                                    <input type="number" name="quantity" v-on:change="updateRow(value)" v-model="value.so_luong" title="Qty" class="qty" size="4">
                                 </div>
                             </div>
+                        </template>
                             <div class="cart_btn">
                                 @if (Auth::guard('agent')->check())
                                     <button class="btn btn-fill-out addToCart" data-id="{{ $sanPham->id }}" type="button">Thêm vào giỏ hàng</button>
@@ -261,7 +261,7 @@
                                         </div>
                                     </div>
                                     <div class="pr_desc">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
+                                        <p>{{ $value->mo_ta_ngan }}</p>
                                     </div>
                                     <div class="pr_switch_wrap">
                                         <div class="product_color_switch">
@@ -279,6 +279,39 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+<script>
+    new Vue({
+        el      :   '#app',
+        data    :   {
+            listCart    : [],
+        },
+        created() {
+            this.loadCart();
+        },
+        methods :   {
+            loadCart() {
+                axios
+                    .get('/cart/data')
+                    .then((res) => {
+                        this.listCart = res.data.data;
+                    });
+            },
+            updateRow(row) {
+                axios
+                    .post('/add-to-cart-update', row)
+                    .then((res) => {
+                        if(res.status) {
+                            toastr.success("Đã cập nhật giỏ hàng!");
+                            this.loadCart();
+                        }
+                    });
+            },
+        },
+    });
+</script>
 @endsection
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -315,4 +348,3 @@
     </div>
 </div>
 </div>
-

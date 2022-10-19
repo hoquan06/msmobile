@@ -12,6 +12,7 @@
         "laravel/helpers": "^1.5",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "stevebauman/location": "^6.5",
         "unisharp/laravel-filemanager": "~1.8",
         "yoeunes/toastr": "^2.0"
     },

@@ -24,7 +24,7 @@
                                     <th class="text-center">@{{ key + 1 }}</th>
                                     <td>@{{ value.ten_san_pham }}</td>
                                     <td class="text-center">
-                                        <button v-on:click="addKhoHang(value.id)" class="btn btn-info btn-sm">Add</button>
+                                        <button v-on:click="addKhoHang(value.id)" class="btn btn-info btn-sm">Thêm</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -39,14 +39,14 @@
                     <div class="card-body">
                         <table class="table table-bordered mb-0">
                             <thead>
-                                <tr class="text-center">
+                                {{-- <tr class="text-center">
                                     <th class="text-center">#</th>
                                     <th class="text-center">Tên Sản Phẩm</th>
                                     <th class="text-center">Số Lượng</th>
                                     <th class="text-center">Đơn Giá</th>
                                     <th class="text-center">Thành Tiền</th>
                                     <th class="text-center">Action</th>
-                                </tr>
+                                </tr> --}}
                             </thead>
                             <tbody>
                                 <tr v-for="(value, key) in danhSachKho">

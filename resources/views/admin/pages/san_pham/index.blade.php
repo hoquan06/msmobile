@@ -3,18 +3,13 @@
     <div class="page-title-icon">
         <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
     </div>
-    <div>
-        Quản Lý Sản Phẩm
-        <div class="page-title-subheading">
-            Thêm Mới Sản Phẩm và Quản Lý Các Loại Sản Phẩm
-        </div>
-    </div>
+    <h3>Quản Lý Sản Phẩm</h3>
 @endsection
 
 @section('content')
     <div class="col-md-12">
         <div class="main-card mb-3 card">
-            <div class="card-body"><h5 class="card-title">Thêm mới sản phẩm</h5>
+            <div class="card-body">
                 <form class="" id="formCreate">
                     <div class="row">
                         <div class="col-md-6">
@@ -49,7 +44,7 @@
                                 <label>Ảnh Đại Diện</label>
                                 <div class="input-group">
                                     <input id="anh_dai_dien" name="anh_dai_dien" class="form-control" type="text">
-                                    <input type="button" class="btn-info lfm" data-input="anh_dai_dien" data-preview="holder" value="Upload">
+                                    <input type="button" class="btn-info lfm" data-input="anh_dai_dien" data-preview="holder" value="Chọn ảnh">
                                 </div>
                                 <img id="holder" style="margin-top:15px;max-height:100px;">
                             </div>
@@ -95,7 +90,7 @@
     <div class="col-md-12">
         <div class="table-response">
             <div class="main-card mb-3 card">
-                <div class="card-body"><h5 class="card-title">Danh Sách Sản Phẩm</h5>
+                <div class="card-body text-center"><h5 class="card-title">Danh Sách Sản Phẩm</h5>
                     <table class="mb-0 table table-bordered" id="tableSanPham">
                         <thead>
                         <tr>
@@ -104,6 +99,7 @@
                             <th class="text-nowrap text-center">Slug Sản Phẩm</th>
                             <th class="text-nowrap text-center">Giá Bán</th>
                             <th class="text-nowrap text-center">Giá Khuyến Mãi</th>
+                            <th class="text-nowrap text-center">Ảnh đại diện</th>
                             <th class="text-nowrap text-center">Tình Trạng</th>
                             <th class="text-nowrap text-center">Danh Mục</th>
                             <th class="text-nowrap text-center">Action</th>
@@ -131,7 +127,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" id="accpectDelete" class="btn btn-danger" data-dismiss="modal">Xóa Sản Phẩm</button>
+          <button type="button" id="acceptDelete" class="btn btn-danger" data-dismiss="modal">Xóa Sản Phẩm</button>
         </div>
       </div>
     </div>
@@ -186,7 +182,7 @@
                                         <label>Ảnh Đại Diện</label>
                                         <div class="input-group">
                                             <input id="anh_dai_dien_edit" name="anh_dai_dien" class="form-control" type="text">
-                                            <input type="button" class="btn-info lfm" data-input="anh_dai_dien_edit" data-preview="holder_edit" value="Upload">
+                                            <input type="button" class="btn-info lfm" data-input="anh_dai_dien_edit" data-preview="holder_edit" value="Chọn ảnh">
                                         </div>
                                         <img id="holder_edit" style="margin-top:15px;max-height:100px;">
                                     </fieldset>
@@ -312,11 +308,12 @@
                         html += '<td>' + value.slug_san_pham + '</td>';
                         html += '<td>' + value.gia_ban + '</td>';
                         html += '<td>' + value.gia_khuyen_mai + '</td>';
+                        html += '<td>' + value.anh_dai_dien + '</td>';
                         html += '<td>' + doan_muon_hien_thi + '</td>';
                         html += '<td>' + value.ten_danh_muc + '</td>';
                         html += '<td>';
-                        html += '<button class="btn btn-danger delete mr-1" data-id="' + value.id + '" data-toggle="modal" data-target="#deleteModal"> Delete </button>';
-                        html += '<button class="btn btn-success edit" data-id="' + value.id + '" data-toggle="modal" data-target="#updateModal"> Edit </button>';
+                        html += '<button class="btn btn-danger delete mr-1" data-id="' + value.id + '" data-toggle="modal" data-target="#deleteModal"> Xóa </button>';
+                        html += '<button class="btn btn-success edit" data-id="' + value.id + '" data-toggle="modal" data-target="#updateModal"> Chỉnh sửa </button>';
                         html += '</td>';
                         html += '</tr>';
                     });
@@ -351,8 +348,6 @@
                 'id_danh_muc'           :   id_danh_muc,
                 'is_open'               :   is_open,
             };
-
-            console.log(thongTinSanPhamCanTao);
 
             $.ajax({
                 url     :   '/admin/san-pham/tao-san-pham',
@@ -397,7 +392,7 @@
             $("#idCanXoa").val(idSanPham);
         });
 
-        $("#accpectDelete").click(function(){
+        $("#acceptDelete").click(function(){
             var id_can_xoa = $("#idCanXoa").val();
             $.ajax({
 				url     :   '/admin/san-pham/xoa-san-pham/' + id_can_xoa,

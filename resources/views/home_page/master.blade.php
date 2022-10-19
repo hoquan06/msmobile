@@ -41,48 +41,49 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+    @yield('js')
     <script>
-        $(document).ready(function(e) {
-              $.ajaxSetup({
-                  headers: {
-                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                  }
-              });
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
-              $("#login").click(function(e) {
-                  e.preventDefault();
-                  var email = $("#email").val();
-                  var password = $("#password").val();
-                  var payload = {
-                      'email'     : email,
-                      'password'  : password,
-                  };
-                  $.ajax({
-                      url     :   '/agent/login',
-                      data    :   payload,
-                      type    :   'post',
-                      success :   function(res) {
-                          if(res.status == 2) {
-                              toastr.success('Bạn đã login thành công!');
-                              setTimeout(function(){
-                                  $(location).attr('href','/');;
-                              }, 2000);
-                          } else if(res.status == 1) {
-                              toastr.warning("Bạn cần phải kích hoạt email");
-                          } else {
-                              toastr.error("Sai tên đăng nhập hoặc mật khẩu. Vui lòng kiểm tra lại!!!");
-                          }
-                      },
-                      error   :   function(res) {
-                          var danh_sach_loi = res.responseJSON.errors;
-                          $.each(danh_sach_loi, function(key, value){
-                              toastr.error(value[0]);
-                          });
-                      }
-                  });
-              });
+            $("#login").click(function(e) {
+                e.preventDefault();
+                var email = $("#email").val();
+                var password = $("#password").val();
+                var payload = {
+                    'email'     : email,
+                    'password'  : password,
+                };
+                $.ajax({
+                    url     :   '/agent/login',
+                    data    :   payload,
+                    type    :   'post',
+                    success :   function(res) {
+                        if(res.status == 2) {
+                            toastr.success('Bạn đã đăng nhập thành công!');
+                            setTimeout(function(){
+                                $(location).attr('href','/');;
+                            }, 2000);
+                        } else if(res.status == 1) {
+                            toastr.warning("Bạn cần phải kích hoạt email");
+                        } else {
+                            toastr.error("Sai tên đăng nhập hoặc mật khẩu. Vui lòng kiểm tra lại!!!");
+                        }
+                    },
+                    error   :   function(res) {
+                        var danh_sach_loi = res.responseJSON.errors;
+                        $.each(danh_sach_loi, function(key, value){
+                            toastr.error(value[0]);
+                        });
+                    }
+                });
+            });
 
-              $("#register").click(function(e) {
+            $("#register").click(function(e) {
                 var payload = {
                     'ho_va_ten'     : $("#ho_va_ten").val(),
                     'so_dien_thoai' : $("#so_dien_thoai").val(),
@@ -92,9 +93,6 @@
                     'dia_chi'       : $("#dia_chi").val(),
                     'agree'         : $('#agree').get(0).checked,
                 };
-
-                console.log(payload);
-
                 $.ajax({
                     url     :   '/agent/register',
                     type    :   'post',
@@ -104,7 +102,7 @@
                             console.log(res.status);
                             toastr.success("Bạn đã đăng kí tài khoản thành công.Vui lòng kiểm tra Email để kích hoạt tài khoản!!!");
                             setTimeout(function(){
-                                $(location).attr('href','http://127.0.0.1:8000/agent/login');
+                                $(location).attr('href','/agent/login');
                             }, 2000);
                         }
                     },
@@ -115,25 +113,20 @@
                         });
                     },
                 });
-              });
-
-              $('body').on('click','.plus',function(){
-                var id_cart  = $(this).data('id');
-                var so_luong = $(this).data('qty');
-                changeQty(id_cart, so_luong + 1);
             });
 
-            $('body').on('click','.minus',function(){
-                var id_cart  = $(this).data('id');
-                var so_luong = $(this).data('qty');
-                console.log(so_luong);
-                changeQty(id_cart, so_luong - 1);
+            $("#registerEmail").click(function(e){
+                var payload = {
+                    'email' :   $("#emailSubscribe").val(),
+                };
+                axios
+                    .post('/subscribe', payload)
+                    .then((res) => {
+                        if(res.data.status) {
+                            toastr.success("Bạn đã đăng ký thông tin thành công!");
+                        }
+                    });
             });
-          });
-    </script>
-    @yield('js')
-    <script>
-        $(document).ready(function() {
             $(".addToCart").click(function(){
                 var san_pham_id = $(this).data('id');
                 var payload = {
@@ -155,7 +148,7 @@
                             toastr.error(value[0]);
                         });
                     });
-
+                // {
                 //     $.ajax({
                 //     url     :   '/add-to-cart',
                 //     type    :   'post',
@@ -173,7 +166,8 @@
                 //             toastr.error(value[0]);
                 //         });
                 //     },
-                // });
+                //     });
+                // }
             });
         });
     </script>

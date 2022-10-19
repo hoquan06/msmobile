@@ -3,11 +3,7 @@
     <div class="page-title-icon">
         <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
     </div>
-    <div>Quản Lý Danh Mục Sản Phẩm
-        <div class="page-title-subheading">
-            Thêm Mới Danh Sách Danh Mục.
-        </div>
-    </div>
+    <h3>Quản Lý Danh Mục Sản Phẩm</h3>
 @endsection
 
 @section('content')
@@ -15,7 +11,6 @@
         <div class="col-md-5">
             <div class="main-card mb-3 card">
                 <div class="card-body">
-                    <h5 class="card-title">Thêm Mới Danh Mục Sản Phẩm</h5>
                     {{-- @if ($errors->any())
                         @foreach ($errors->all() as $key => $value)
                             <div class="alert alert-danger" role="alert">
@@ -37,7 +32,7 @@
                             <label>Hình Ảnh</label>
                             <div class="input-group">
                                 <input id="hinh_anh" class="form-control" type="text">
-                                <input type="button" class="btn-info lfm" data-input="hinh_anh" data-preview="holder" value="Upload">
+                                <input type="button" class="btn-info lfm" data-input="hinh_anh" data-preview="holder" value="Chọn ảnh">
                             </div>
                             <img id="holder" style="margin-top:15px;max-height:100px;">
                         </div>
@@ -64,7 +59,7 @@
         </div>
         <div class="col-md-7">
             <div class="main-card mb-3 card">
-                <div class="card-body"><h5 class="card-title">Danh Sách Danh Mục</h5>
+                <div class="card-body text-center"><h5 class="card-title">Danh Sách Danh Mục</h5>
                     <table class="mb-0 table table-bordered" id="tableDanhMuc">
                         <thead>
                             <tr>
@@ -127,7 +122,7 @@
                     <label>Hình Ảnh</label>
                     <div class="input-group">
                         <input id="hinh_anh_edit" class="form-control" type="text">
-                        <input type="button" class="btn-info lfm" data-input="hinh_anh_edit" data-preview="holder_edit" value="Upload">
+                        <input type="button" class="btn-info lfm" data-input="hinh_anh_edit" data-preview="holder_edit" value="Chọn ảnh">
                     </div>
                     <img id="holder_edit" style="margin-top:15px;max-height:100px;">
                 </div>
@@ -205,8 +200,8 @@
                             content_table +=  text_button;
                             content_table += '</button></td>';
                             content_table += '<td class="text-center">';
-                            content_table += '<button class="btn btn-danger delete mr-1" data-iddelete="'+ value.id +'" data-toggle="modal" data-target="#deleteModal">Delete</button>';
-                            content_table += '<button class="btn btn-primary edit mr-1" data-idedit=' + value.id + ' data-toggle="modal" data-target="#editModal">Edit</button>';
+                            content_table += '<button class="btn btn-danger delete mr-1" data-iddelete="'+ value.id +'" data-toggle="modal" data-target="#deleteModal">Xóa</button>';
+                            content_table += '<button class="btn btn-primary edit mr-1" data-idedit=' + value.id + ' data-toggle="modal" data-target="#editModal">Chỉnh sửa</button>';
                             content_table += '</td>';
                             content_table += '</tr>';
                         });
@@ -366,7 +361,7 @@
                     type    :   'post',
                     data    :    payload,
                     success :    function(res) {
-                        toastr.success("Đã thêm mới danh mục thành công!!!!");
+                        toastr.success("Đã thêm mới danh mục thành công!!!");
                         loadTable();
                         // $('#createDanhMuc').trigger("reset");
                         $('#holder').attr('src', '');
