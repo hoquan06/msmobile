@@ -58,7 +58,7 @@
                                 </div>
                             </li>
                             @endforeach
-                            <li><a class="nav-link nav_item" href="contact.html">Liên Hệ</a></li>
+                            <li><a class="nav-link nav_item" href="https://www.facebook.com/quan.ho.66/">Liên Hệ</a></li>
                         </ul>
                     </div>
                     <div class="contact_phone contact_support">

@@ -65,21 +65,7 @@
                 </div>
                 <ul class="navbar-nav attr-nav align-items-center">
                     <li><a href="#" class="nav-link"><i class="linearicons-heart"></i><span class="wishlist_count">0</span></a></li>
-                    <li class="dropdown cart_dropdown"><a class="nav-link cart_trigger" href="#" data-toggle="dropdown"><i class="linearicons-bag2"></i><span class="cart_count">2</span><span class="amount"></a>
-                        <div class="cart_box cart_right dropdown-menu dropdown-menu-right">
-                            <ul class="cart_list">
-                                <li>
-                                    <a href="#" class="item_remove"><i class="ion-close"></i></a>
-                                    <a href="#"><img src="assets/images/cart_thamb1.jpg" alt="cart_thumb1">Variable product 001</a>
-                                    <span class="cart_quantity"> 1 x <span class="cart_amount"> <span class="price_symbole">$</span></span>78.00</span>
-                                </li>
-                            </ul>
-                            <div class="cart_footer">
-                                <p class="cart_total"><strong>Tổng tiền:</strong> <span class="cart_price"> <span class="price_symbole">$</span></span>159.00</p>
-                                <p class="cart_buttons"><a href="/cart" class="btn btn-fill-line view-cart">Xem Giỏ Hàng</a></p>
-                            </div>
-                        </div>
-                    </li>
+                    <li><a class="nav-link cart_trigger" href="/cart"><i class="linearicons-bag2"></i><span class="amount"></a>
                     @if (Auth::guard('agent')->check())
                     <li>
                         <a href="#" class="nav-link" data-toggle="modal" data-target="#myAccount"><i class="linearicons-user"></i>

@@ -61,7 +61,7 @@
                                                 </div>
                                             </div>
                                             <div class="pr_desc">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
+                                                <p>{{$value->mo_ta_ngan}}</p>
                                             </div>
                                         </div>
                                     </div>

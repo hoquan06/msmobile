@@ -5,7 +5,7 @@
 @section('content')
     <div id="app" class="row">
         <div class="col-md-4">
-            <div class="card" style="height: auto">
+            <div class="card">
                 <div class="card-content collapse show">
                     <div class="card-body">
                         <fieldset class="form-group position-relative">
@@ -39,30 +39,30 @@
                     <div class="card-body">
                         <table class="table table-bordered mb-0">
                             <thead>
-                                {{-- <tr class="text-center">
+                                <tr class="text-center text-nowrap">
                                     <th class="text-center">#</th>
                                     <th class="text-center">Tên Sản Phẩm</th>
                                     <th class="text-center">Số Lượng</th>
                                     <th class="text-center">Đơn Giá</th>
                                     <th class="text-center">Thành Tiền</th>
                                     <th class="text-center">Action</th>
-                                </tr> --}}
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="(value, key) in danhSachKho">
                                     <th class="text-center align-middle">@{{ key + 1 }}</th>
                                     <td class="align-middle text-nowrap">@{{ value.ten_san_pham }}</td>
-                                    <td class="align-middle" style="width: 80px">
-                                        <input v-on:change="update(value)" v-model="value.so_luong" type="number" min="1" class="form-control text-center" v-bind:value="value.so_luong">
+                                    <td class="align-middle" style="width: 150px">
+                                        <input v-on:change="update(value)" v-model="value.so_luong" type="number" style="width: 50px" min="1" class="form-control text-center" v-bind:value="value.so_luong">
                                     </td>
                                     <td class="align-middle" style="width: 150px">
-                                        <input v-on:keyup="update(value)" v-model="value.don_gia" type="number"  class="form-control text-center" v-bind:value="value.don_gia">
+                                        <input v-on:keyup="update(value)" v-model="value.don_gia" type="number" style="width: 110px" class="form-control text-center" v-bind:value="value.don_gia">
                                     </td>
                                     <td class="align-middle">
                                         @{{ value.don_gia * value.so_luong }}
                                     </td>
                                     <td class="text-center align-middle">
-                                        <button class="btn btn-danger" v-on:click="destroy(value.id)">Remove</button>
+                                        <button class="btn btn-danger" v-on:click="destroy(value.id)">Xóa</button>
                                     </td>
                                 </tr>
                             </tbody>

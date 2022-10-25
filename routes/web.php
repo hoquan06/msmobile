@@ -64,6 +64,10 @@ Route::post('/agent/login', [\App\Http\Controllers\AgentController::class, 'logi
 Route::get('/active/{hash}', [\App\Http\Controllers\AgentController::class, 'active']);
 Route::get('/agent/logout', [\App\Http\Controllers\AgentController::class, 'logout']);
 
+// Route::get('/agent/myaccount', [\App\Http\Controllers\AgentController::class, 'myaccount']);
+// Route::post('/agent/edit-myaccount', [\App\Http\Controllers\AgentController::class, 'editMyaccount']);
+// Route::post('/agent/update-myaccount', [\App\Http\Controllers\AgentController::class, 'UpdateMyaccount']);
+
 Route::get('/', [\App\Http\Controllers\HomePageController::class, 'index']);
 Route::get('/san-pham/{id}', [\App\Http\Controllers\HomePageController::class, 'viewSanPham']);
 Route::get('/danh-muc/{id}', [\App\Http\Controllers\HomePageController::class, 'viewDanhMuc']);

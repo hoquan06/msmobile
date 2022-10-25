@@ -98,4 +98,34 @@ class AgentController extends Controller
         toastr()->success('Đăng xuất thành công!!!');
         return redirect()->back();
     }
+
+    // public function myaccount()
+    // {
+    //     return view('home_page.pages.my_account');
+    // }
+
+    // public function editMyaccount($id)
+    // {
+    //     $agent = Auth::guard('agent')->user();
+    //     $agent = Agent::find($id);
+    //     if($agent) {
+    //         return response()->json([
+    //             'status'  =>  true,
+    //             'data'    =>  $agent,
+    //         ]);
+    //     } else {
+    //         return response()->json([
+    //             'status'  =>  false,
+    //         ]);
+    //     }
+    // }
+
+    // public function UpdateMyaccount(Request $request)
+    // {
+    //     $data     = $request->all();
+    //     $agent    = Agent::find($request->id);
+    //     $agent    ->update($data);
+
+    //     return response()->json(['status'=> true]);
+    // }
 }

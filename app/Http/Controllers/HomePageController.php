@@ -13,8 +13,6 @@ class HomePageController extends Controller
 {
     public function index()
     {
-        $config  = Config::latest()->first();
-
         $menuCha = DanhMucSanPham::where('id_danh_muc_cha', 0)
                                  ->where('is_open', 1)
                                  ->get();
@@ -32,7 +30,7 @@ class HomePageController extends Controller
         $sanPhamTrending = DB::select($trending);
         $gioHang = DB::select($gio);
 
-        return view('home_page.pages.home', compact('menuCha', 'menuCon', 'config', 'bestSeller','arrival', 'sanPhamTrending', 'gioHang'));
+        return view('home_page.pages.home', compact('menuCha', 'menuCon', 'bestSeller','arrival', 'sanPhamTrending', 'gioHang'));
     }
 
     public function viewSanPham($id)
