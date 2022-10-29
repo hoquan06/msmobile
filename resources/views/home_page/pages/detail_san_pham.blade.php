@@ -86,13 +86,13 @@
                         </div>
                         <hr />
                         <div class="cart_extra">
-                            <template v-for="(value, key) in listCart">
                             <div class="cart-product-quantity">
                                 <div class="quantity">
-                                    <input type="number" name="quantity" v-on:change="updateRow(value)" v-model="value.so_luong" title="Qty" class="qty" size="4">
+                                    <input type="button" value="-" class="minus">
+                                    <input type="text" name="quantity" value="1" title="Qty" class="qty" size="4">
+                                    <input type="button" value="+" class="plus">
                                 </div>
                             </div>
-                        </template>
                             <div class="cart_btn">
                                 @if (Auth::guard('agent')->check())
                                     <button class="btn btn-fill-out addToCart" data-id="{{ $sanPham->id }}" type="button">Thêm vào giỏ hàng</button>
@@ -279,39 +279,6 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('js')
-<script>
-    new Vue({
-        el      :   '#app',
-        data    :   {
-            listCart    : [],
-        },
-        created() {
-            this.loadCart();
-        },
-        methods :   {
-            loadCart() {
-                axios
-                    .get('/cart/data')
-                    .then((res) => {
-                        this.listCart = res.data.data;
-                    });
-            },
-            updateRow(row) {
-                axios
-                    .post('/add-to-cart-update', row)
-                    .then((res) => {
-                        if(res.status) {
-                            toastr.success("Đã cập nhật giỏ hàng!");
-                            this.loadCart();
-                        }
-                    });
-            },
-        },
-    });
-</script>
 @endsection
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">

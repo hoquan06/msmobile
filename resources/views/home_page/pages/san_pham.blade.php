@@ -26,11 +26,9 @@
                                 <div class="product_header_left">
                                     <div class="custom_select">
                                         <select class="form-control form-control-sm">
-                                            <option value="order">Default sorting</option>
-                                            <option value="popularity">Sort by popularity</option>
-                                            <option value="date">Sort by newness</option>
-                                            <option value="price">Sort by price: low to high</option>
-                                            <option value="price-desc">Sort by price: high to low</option>
+                                            <option value="order">Mặc định</option>
+                                            <option value="price">Giá: Từ thấp đến cao</option>
+                                            <option value="price-desc">Giá: Từ cao xuống thấp</option>
                                         </select>
                                     </div>
                                 </div>
@@ -38,14 +36,6 @@
                                     <div class="products_view">
                                         <a href="javascript:void(0);" class="shorting_icon grid active"><i class="ti-view-grid"></i></a>
                                         <a href="javascript:void(0);" class="shorting_icon list"><i class="ti-layout-list-thumb"></i></a>
-                                    </div>
-                                    <div class="custom_select">
-                                        <select class="form-control form-control-sm">
-                                            <option value="">Showing</option>
-                                            <option value="9">9</option>
-                                            <option value="12">12</option>
-                                            <option value="18">18</option>
-                                        </select>
                                     </div>
                                 </div>
                             </div>

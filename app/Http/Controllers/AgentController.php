@@ -6,18 +6,18 @@ use App\Http\Requests\AgentLoginRequest;
 use App\Http\Requests\AgentRegisterRequest;
 use App\Mail\KichHoatMail;
 use App\Models\Agent;
+use App\Models\ChiTietDonHang;
+use App\Models\DonHang;
+use App\Models\SanPham;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AgentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function register()
     {
         return view('home_page.pages.register');
@@ -99,33 +99,21 @@ class AgentController extends Controller
         return redirect()->back();
     }
 
-    // public function myaccount()
-    // {
-    //     return view('home_page.pages.my_account');
-    // }
-
-    // public function editMyaccount($id)
-    // {
-    //     $agent = Auth::guard('agent')->user();
-    //     $agent = Agent::find($id);
-    //     if($agent) {
-    //         return response()->json([
-    //             'status'  =>  true,
-    //             'data'    =>  $agent,
-    //         ]);
-    //     } else {
-    //         return response()->json([
-    //             'status'  =>  false,
-    //         ]);
-    //     }
-    // }
-
-    // public function UpdateMyaccount(Request $request)
-    // {
-    //     $data     = $request->all();
-    //     $agent    = Agent::find($request->id);
-    //     $agent    ->update($data);
-
-    //     return response()->json(['status'=> true]);
-    // }
+    public function myaccount()
+    {
+        $agent   = Auth::guard('agent')->user();
+        if($agent){
+            $bill = DonHang::where('agent_id', $agent->id)->get();
+            $viewbill = ChiTietDonHang::join('san_phams', 'chi_tiet_don_hangs.san_pham_id', 'san_phams.id')
+                                      ->where('agent_id', $agent->id)
+                                      ->where('is_cart',0)
+                                      ->where('don_hang_id', 'like', 27)
+                                      ->select('chi_tiet_don_hangs.*', 'san_phams.anh_dai_dien')
+                                      ->get();
+        }else{
+            $bill = DonHang::get();
+            $viewbill = ChiTietDonHang::get();
+        }
+        return view('home_page.pages.my_account', compact('bill', 'viewbill'));
+    }
 }

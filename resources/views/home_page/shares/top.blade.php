@@ -68,7 +68,7 @@
                     <li><a class="nav-link cart_trigger" href="/cart"><i class="linearicons-bag2"></i><span class="amount"></a>
                     @if (Auth::guard('agent')->check())
                     <li>
-                        <a href="#" class="nav-link" data-toggle="modal" data-target="#myAccount"><i class="linearicons-user"></i>
+                        <a href="/agent/myaccount" class="nav-link"><i class="linearicons-user"></i>
                             <span class="my-cart">
                                 <span>
                                     <strong>{{ Auth::guard('agent')->user()->ho_va_ten }}</strong>

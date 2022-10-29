@@ -25,8 +25,8 @@
         @include('home_page.pages.thanh_phan.exclusive_products')
         @include('home_page.pages.thanh_phan.trending_product')
         @include('home_page.pages.thanh_phan.latest_news')
-        @include('home_page.pages.thanh_phan.logo')
-        @include('home_page.pages.thanh_phan.contact') --}}
+        @include('home_page.pages.thanh_phan.logo') --}}
+        @include('home_page.pages.thanh_phan.contact')
     </div>
     @include('home_page.shares.footer')
     <a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a>

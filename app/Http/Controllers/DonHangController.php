@@ -11,6 +11,10 @@ use Illuminate\Support\Str;
 
 class DonHangController extends Controller
 {
+    public function billDone(){
+        return view('home_page.pages.billDone');
+    }
+
     public function store(Request $request)
     {
         $agent = Auth::guard('agent')->user();

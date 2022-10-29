@@ -64,9 +64,7 @@ Route::post('/agent/login', [\App\Http\Controllers\AgentController::class, 'logi
 Route::get('/active/{hash}', [\App\Http\Controllers\AgentController::class, 'active']);
 Route::get('/agent/logout', [\App\Http\Controllers\AgentController::class, 'logout']);
 
-// Route::get('/agent/myaccount', [\App\Http\Controllers\AgentController::class, 'myaccount']);
-// Route::post('/agent/edit-myaccount', [\App\Http\Controllers\AgentController::class, 'editMyaccount']);
-// Route::post('/agent/update-myaccount', [\App\Http\Controllers\AgentController::class, 'UpdateMyaccount']);
+Route::get('/agent/myaccount', [\App\Http\Controllers\AgentController::class, 'myaccount']);
 
 Route::get('/', [\App\Http\Controllers\HomePageController::class, 'index']);
 Route::get('/san-pham/{id}', [\App\Http\Controllers\HomePageController::class, 'viewSanPham']);
@@ -77,6 +75,7 @@ Route::post('/add-to-cart', [\App\Http\Controllers\ChiTietDonHangController::cla
 Route::get('/cart/data', [\App\Http\Controllers\ChiTietDonHangController::class, 'dataCart']);
 Route::post('/add-to-cart-update', [\App\Http\Controllers\ChiTietDonHangController::class, 'addToCartUpdate']);
 Route::post('/remove-cart', [\App\Http\Controllers\ChiTietDonHangController::class, 'removeCart']);
+Route::get('/bill-done', [\App\Http\Controllers\DonHangController::class, 'billDone']);
 Route::get('/create-bill', [\App\Http\Controllers\DonHangController::class, 'store']);
 Route::post('/subscribe', [\App\Http\Controllers\SubscribeEmailController::class, 'create']);
 

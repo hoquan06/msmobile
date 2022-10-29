@@ -418,9 +418,8 @@
                         .get('/create-bill')
                         .then((res) => {
                             if(res.data.status == 1){
-                                toastr.success("Đã tạo đơn hàng thành công");
                                 setTimeout(function(){
-                                    $(location).attr('href','/cart');;
+                                    $(location).attr('href','/bill-done');;
                                 }, 2000);
                             }else if(res.data.status == 2){
                                 toastr.error("Giỏ hàng rỗng!");

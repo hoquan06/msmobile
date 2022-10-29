@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-md-6">
                     <ol class="breadcrumb justify-content-md-end">
-                        <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
                         <li class="breadcrumb-item active">Tài khoản</li>
                     </ol>
                 </div>
@@ -24,18 +24,18 @@
                 <div class="col-lg-3 col-md-4">
                     <div class="dashboard_menu">
                         <ul class="nav nav-tabs flex-column" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="dashboard-tab" data-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="false"><i class="ti-layout-grid2"></i>Tài khoản</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="orders-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false"><i class="ti-shopping-cart-full"></i>Sản phẩm đã mua</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="account-detail-tab" data-toggle="tab" href="#account-detail" role="tab" aria-controls="account-detail" aria-selected="true"><i class="ti-id-badge"></i>Thông tin cá nhân</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/agent/logout"><i class="ti-lock"></i>Đăng xuất</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" id="dashboard-tab" data-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="false"><i class="ti-layout-grid2"></i>Tài khoản</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="orders-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false"><i class="ti-shopping-cart-full"></i>Sản phẩm đã mua</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="account-detail-tab" data-toggle="tab" href="#account-detail" role="tab" aria-controls="account-detail" aria-selected="true"><i class="ti-id-badge"></i>Thông tin cá nhân</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/agent/logout"><i class="ti-lock"></i>Đăng xuất</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -54,32 +54,36 @@
                         <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3>Orders</h3>
+                                    <h3>Đơn hàng</h3>
                                 </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Order</th>
-                                                    <th>Date</th>
-                                                    <th>Status</th>
-                                                    <th>Total</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>#1234</td>
-                                                    <td>March 15, 2020</td>
-                                                    <td>Processing</td>
-                                                    <td>$78.00 for 1 item</td>
-                                                    <td><a href="#" class="btn btn-fill-out btn-sm">View</a></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                @if (Auth::guard('agent')->check())
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table text-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th>STT</th>
+                                                        <th>Mã đơn hàng</th>
+                                                        <th>Ngày mua</th>
+                                                        <th>Tổng tiền</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($bill as $key=>$value)
+                                                        <tr>
+                                                            <td>{{ $key + 1 }}</td>
+                                                            <td>{{ $value->ma_don_hang }}</td>
+                                                            <td>{{ $value->created_at }}</td>
+                                                            <td>{{ $value->thuc_tra }}</td>
+                                                            <td><a class="btn btn-fill-out btn-sm" data-toggle="modal" data-target="#myAccount">View</a></td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
                         <div class="tab-pane fade" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
@@ -88,27 +92,27 @@
                                     <h3>Thông tin cá nhân</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form method="post" name="enq" action="/agent/update-myaccount">
+                                    <form method="post" action="/agent/update-myaccount">
                                         @csrf
                                         @if (Auth::guard('agent')->check())
                                             <div class="row">
                                                 <div class="form-group col-md-6">
                                                     <label>Họ Và Tên <span class="required">*</span></label>
-                                                    <input type="text" id="ho_va_ten" required="" class="form-control" value="{{ Auth::guard('agent')->user()->ho_va_ten }}">
+                                                    <input type="text" name="ho_va_ten" id="ho_va_ten" required="" class="form-control" value="{{ Auth::guard('agent')->user()->ho_va_ten }}">
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label>Số Điện Thoại <span class="required">*</span></label>
-                                                    <input type="phone" id="so_dien_thoai" required="" class="form-control" value="{{ Auth::guard('agent')->user()->so_dien_thoai }}">
+                                                    <input type="phone" name="so_dien_thoai" id="so_dien_thoai" required="" class="form-control" value="{{ Auth::guard('agent')->user()->so_dien_thoai }}">
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label>Địa Chỉ Email <span class="required">*</span></label>
-                                                    <input type="email" id="email" required="" class="form-control" value="{{ Auth::guard('agent')->user()->email }}">
+                                                    <input type="email" name="email" id="email" required="" class="form-control" value="{{ Auth::guard('agent')->user()->email }}">
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label>Địa Chỉ <span class="required">*</span></label>
-                                                    <input type="text" id="dia_chi" required="" class="form-control" value="{{ Auth::guard('agent')->user()->dia_chi }}">
+                                                    <input type="text" name="dia_chi" id="dia_chi" required="" class="form-control" value="{{ Auth::guard('agent')->user()->dia_chi }}">
                                                 </div>
-                                                <div class="form-group col-md-12">
+                                                {{-- <div class="form-group col-md-12">
                                                     <label>Mật Khẩu Cũ <span class="required">*</span></label>
                                                     <input class="form-control" required="" type="password" id="password">
                                                 </div>
@@ -119,9 +123,9 @@
                                                 <div class="form-group col-md-12">
                                                     <label>Nhập Lại Mật Khẩu<span class="required">*</span></label>
                                                     <input class="form-control" required="" type="password" id="password">
-                                                </div>
+                                                </div> --}}
                                                 <div class="col-md-12">
-                                                    <button  class="btn btn-fill-out" name="submit" value="Submit">Lưu</button>
+                                                    <button  class="btn btn-fill-out" name="submit" value="Submit">Cập nhật</button>
                                                 </div>
                                             </div>
                                         @else
@@ -136,3 +140,47 @@
         </div>
     </div>
 @endsection
+<div class="modal fade" id="myAccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content" >
+        <div class="modal-header text-center">
+          <h5 >Thông tin cá nhân</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form >
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Ảnh dại diện</th>
+                                    <th>Số lượng</th>
+                                    <th>Đơn giá</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($viewbill as $key=>$value)
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{ $value->ten_san_pham }}</td>
+                                        <td><img src="{{ $value->anh_dai_dien}}"></td>
+                                        <td>{{ $value->so_luong }}</td>
+                                        <td>{{ $value->don_gia }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
