@@ -113,10 +113,10 @@
                                                     <input type="text" name="dia_chi" id="dia_chi" required="" class="form-control" value="{{ Auth::guard('agent')->user()->dia_chi }}">
                                                 </div>
                                                 {{-- <div class="form-group col-md-12">
-                                                    <label>Mật Khẩu Cũ <span class="required">*</span></label>
-                                                    <input class="form-control" required="" type="password" id="password">
-                                                </div>
-                                                <div class="form-group col-md-12">
+                                                    <label>Mật Khẩu Mới <span class="required">*</span></label>
+                                                    <input class="form-control" name="password" type="password" id="password">
+                                                </div> --}}
+                                                {{-- <div class="form-group col-md-12">
                                                     <label>Mật Khẩu Mới <span class="required">*</span></label>
                                                     <input class="form-control" required="" type="password" id="password">
                                                 </div>
@@ -125,7 +125,7 @@
                                                     <input class="form-control" required="" type="password" id="password">
                                                 </div> --}}
                                                 <div class="col-md-12">
-                                                    <button  class="btn btn-fill-out" name="submit" value="Submit">Cập nhật</button>
+                                                    <button  class="btn btn-fill-out" type="submit" value="Submit">Cập nhật</button>
                                                 </div>
                                             </div>
                                         @else

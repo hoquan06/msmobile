@@ -65,6 +65,7 @@ Route::get('/active/{hash}', [\App\Http\Controllers\AgentController::class, 'act
 Route::get('/agent/logout', [\App\Http\Controllers\AgentController::class, 'logout']);
 
 Route::get('/agent/myaccount', [\App\Http\Controllers\AgentController::class, 'myaccount']);
+Route::post('/agent/update-myaccount', [\App\Http\Controllers\AgentController::class, 'updateMyaccount']);
 
 Route::get('/', [\App\Http\Controllers\HomePageController::class, 'index']);
 Route::get('/san-pham/{id}', [\App\Http\Controllers\HomePageController::class, 'viewSanPham']);

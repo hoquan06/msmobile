@@ -116,4 +116,33 @@ class AgentController extends Controller
         }
         return view('home_page.pages.my_account', compact('bill', 'viewbill'));
     }
+
+    public function updateMyaccount(Request $request)
+    {
+        $agent   = Auth::guard('agent')->user();
+        if($agent){
+            $parts = explode(" ", $request->ho_va_ten);
+            if(count($parts) > 1) {
+                $lastname = array_pop($parts);
+                $firstname = implode(" ", $parts);
+            }
+            else
+            {
+                $firstname = $request->ho_va_ten;
+                $lastname = " ";
+            }
+
+            $data               = $request->all();
+            $data['ho_lot']     = $firstname;
+            $data['ten']        = $lastname;
+            $info               = Agent::find($agent->id);
+            $info               ->update($data);
+
+            toastr()->success('Đã cập nhật thông tin thành công!');
+            return redirect('/agent/myaccount');
+        }
+        else{
+            toastr()->error("Lỗi!!!");
+        }
+    }
 }
