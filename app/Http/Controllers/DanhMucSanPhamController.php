@@ -19,7 +19,13 @@ class DanhMucSanPhamController extends Controller
     public function store(CreateDanhMucSanPhamRequest $request)
     {
         $data = $request->all();
-        DanhMucSanPham::create($data);
+        DanhMucSanPham::create([
+            'ten_danh_muc'      =>  $request->ten_danh_muc,
+            'slug_danh_muc'     =>  $request->slug_danh_muc,
+            'hinh_anh'          =>  $request->hinh_anh,
+            'id_danh_muc_cha'   =>  empty($request->id_danh_muc_cha) ? 0 : $request->id_danh_muc_cha,
+            'is_open'           =>  $request->is_open,
+        ]);
 
         return response()->json([
             'trangThai'         =>  true,
