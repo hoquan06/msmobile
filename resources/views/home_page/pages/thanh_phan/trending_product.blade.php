@@ -27,7 +27,11 @@
                                             @endif
                                             <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
                                             <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                            <li><a href="#"><i class="icon-heart"></i></a></li>
+                                            @if (Auth::guard('agent')->check())
+                                                <li><a class="addFavourite" data-id="{{ $value->id }}"><i class="icon-heart"></i></a></li>
+                                            @else
+                                                <li><a class="addFavourite" data-toggle="modal" data-target="#myModal"><i class="icon-heart"></i></a></li>
+                                            @endif
                                         </ul>
                                     </div>
                                 </div>

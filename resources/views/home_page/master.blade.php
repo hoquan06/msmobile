@@ -99,7 +99,6 @@
                     data    :   payload,
                     success :   function(res) {
                         if(res.status){
-                            console.log(res.status);
                             toastr.success("Bạn đã đăng kí tài khoản thành công.Vui lòng kiểm tra Email để kích hoạt tài khoản!!!");
                             setTimeout(function(){
                                 $(location).attr('href','/agent/login');
@@ -127,6 +126,7 @@
                         }
                     });
             });
+
             $(".addToCart").click(function(){
                 var san_pham_id = $(this).data('id');
                 var payload = {
@@ -168,6 +168,44 @@
                 //     },
                 //     });
                 // }
+            });
+
+            $(".addFavourite").click(function(){
+                var san_pham_id = $(this).data('id');
+                var payload = {
+                    'san_pham_id'   : san_pham_id,
+                    'so_luong'      : 1,
+                };
+                axios
+                    .post('/agent/add-favourite', payload)
+                    .then((res) => {
+                        if(res.data.status == 0){
+                            toastr.success("Đã bỏ yêu thích sản phẩm này!");
+                        } else if(res.data.status == 1) {
+                            toastr.success("Đã thêm vào mục yêu thích!");
+                        } else {
+                            toastr.error("Bạn cần đăng nhập trước!");
+                        }
+                    })
+            });
+
+            $(".removeFavourite").click(function(){
+                var san_pham_id = $(this).data('id');
+                var payload = {
+                    'san_pham_id'   : san_pham_id,
+                    'so_luong'      : 1,
+                };
+                axios
+                    .post('/agent/remove-favourite', payload)
+                    .then((res) => {
+                        if(res.data.status == 0){
+                            toastr.success("Đã xóa sản phẩm yêu thích!");
+                        }else if(res.data.status == 1){
+                            toastr.error("Không tìm thấy sản phẩm!");
+                        }else{
+                            toastr.error("Bạn cần đăng nhập trước!");
+                        }
+                    });
             });
         });
     </script>

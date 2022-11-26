@@ -111,8 +111,8 @@ class AgentController extends Controller
                                       ->select('chi_tiet_don_hangs.*', 'san_phams.anh_dai_dien')
                                       ->get();
         }else{
-            $bill = DonHang::get();
-            $viewbill = ChiTietDonHang::get();
+            $bill = DonHang::all();
+            $viewbill = ChiTietDonHang::all();
         }
         return view('home_page.pages.my_account', compact('bill', 'viewbill'));
     }

@@ -7,7 +7,9 @@ use App\Http\Requests\KiemTraDuLieuTaoSanPham;
 use App\Http\Requests\UpdateSanPhamRequest;
 use App\Models\SanPham;
 use App\Models\DanhMucSanPham;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SanPhamController extends Controller
 {

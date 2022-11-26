@@ -39,6 +39,7 @@
                         <div class="position-relative form-group">
                             <label>Danh Mục Cha</label>
                             <select id="id_danh_muc_cha" class="form-control">
+                                <option value=0>Đóng Sản Phẩm</option>
                                 {{-- <option value="">Danh Mục Root</option>
                                     @foreach ($danh_muc_cha as $key => $value)
                                         <option value={{ $value->id }}>{{ $value->ten_danh_muc }}</option>
@@ -342,18 +343,13 @@
             });
             $("#themMoiDanhMuc").click(function(e){
                 e.preventDefault();
-                var val_ten_danh_muc    = $("#ten_danh_muc").val();
-                var val_slug_danh_muc   = $("#slug_danh_muc").val();
-                var val_hinh_anh        = $("#hinh_anh").val();
-                var val_id_danh_muc_cha = $("#id_danh_muc_cha").val();
-                var val_is_open         = $("#is_open").val();
 
                 var payload = {
-                    'ten_danh_muc'      :   val_ten_danh_muc,
-                    'slug_danh_muc'     :   val_slug_danh_muc,
-                    'hinh_anh'          :   val_hinh_anh,
-                    'id_danh_muc_cha'   :   val_id_danh_muc_cha,
-                    'is_open'           :   val_is_open,
+                    'ten_danh_muc'      :   $("#ten_danh_muc").val(),
+                    'slug_danh_muc'     :   $("#slug_danh_muc").val(),
+                    'hinh_anh'          :   $("#hinh_anh").val(),
+                    'id_danh_muc_cha'   :   $("#id_danh_muc_cha").val(),
+                    'is_open'           :   $("#is_open").val(),
                 };
 
                 $.ajax({

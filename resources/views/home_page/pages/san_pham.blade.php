@@ -58,7 +58,11 @@
                                                 @endif
                                                 <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
                                                 <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                                <li><a href="#"><i class="icon-heart"></i></a></li>
+                                                @if (Auth::guard('agent')->check())
+                                                    <li><a class="addFavourite" data-id="{{ $value->id }}"><i class="icon-heart"></i></a></li>
+                                                @else
+                                                    <li><a class="addFavourite" data-toggle="modal" data-target="#myModal"><i class="icon-heart"></i></a></li>
+                                                @endif
                                             </ul>
                                         </div>
                                     </div>
@@ -89,13 +93,17 @@
                                         <div class="list_product_action_box">
                                             <ul class="list_none pr_action_btn">
                                                 @if (Auth::guard('agent')->check())
-                                                    <li class="addToCart" data-id="{{ $value->id }}"><a class="icon-basket-loaded"><i class="icon-basket-loaded"></i> Thêm vào giỏ hàng</a></li>
+                                                    <li class="add-to-cart addToCart" data-id="{{ $value->id }}"><a class="icon-basket-loaded"> Thêm vào giỏ hàng</a></li>
                                                 @else
-                                                    <li class="add-to-cart" data-toggle="modal" data-target="#myModal"><a class="icon-basket-loaded"> Thêm vào giỏ hàng</a></li>
+                                                    <li class="add-to-cart addToCart" data-toggle="modal" data-target="#myModal"><a class="icon-basket-loaded"> Thêm vào giỏ hàng</a></li>
                                                 @endif
                                                 <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
                                                 <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                                <li><a href="#"><i class="icon-heart"></i></a></li>
+                                                @if (Auth::guard('agent')->check())
+                                                    <li><a class="addFavourite" data-id="{{ $value->id }}"><i class="icon-heart"></i></a></li>
+                                                @else
+                                                    <li><a class="addFavourite" data-toggle="modal" data-target="#myModal"><i class="icon-heart"></i></a></li>
+                                                @endif
                                             </ul>
                                         </div>
                                     </div>

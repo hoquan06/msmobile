@@ -64,7 +64,7 @@
                     </form>
                 </div>
                 <ul class="navbar-nav attr-nav align-items-center">
-                    <li><a href="#" class="nav-link"><i class="linearicons-heart"></i><span class="wishlist_count">0</span></a></li>
+                    <li><a href="/agent/favourite" class="nav-link"><i class="linearicons-heart"></i></a></li>
                     <li><a class="nav-link cart_trigger" href="/cart"><i class="linearicons-bag2"></i><span class="amount"></a>
                     @if (Auth::guard('agent')->check())
                     <li>

@@ -76,7 +76,11 @@ Route::post('/add-to-cart', [\App\Http\Controllers\ChiTietDonHangController::cla
 Route::get('/cart/data', [\App\Http\Controllers\ChiTietDonHangController::class, 'dataCart']);
 Route::post('/add-to-cart-update', [\App\Http\Controllers\ChiTietDonHangController::class, 'addToCartUpdate']);
 Route::post('/remove-cart', [\App\Http\Controllers\ChiTietDonHangController::class, 'removeCart']);
+
 Route::get('/bill-done', [\App\Http\Controllers\DonHangController::class, 'billDone']);
 Route::get('/create-bill', [\App\Http\Controllers\DonHangController::class, 'store']);
 Route::post('/subscribe', [\App\Http\Controllers\SubscribeEmailController::class, 'create']);
 
+Route::get('/agent/favourite', [\App\Http\Controllers\FavouriteController::class, 'index']);
+Route::post('/agent/add-favourite', [\App\Http\Controllers\FavouriteController::class, 'addFavourite']);
+Route::post('/agent/remove-favourite', [\App\Http\Controllers\FavouriteController::class, 'removeFavourite']);

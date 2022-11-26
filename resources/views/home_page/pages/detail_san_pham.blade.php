@@ -100,7 +100,11 @@
                                     <button class="btn btn-fill-out addToCart" data-toggle="modal" data-target="#myModal" type="button">Thêm vào giỏ hàng</button>
                                 @endif
                                 <a class="add_compare" href="#"><i class="icon-shuffle"></i></a>
-                                <a class="add_wishlist" href="#"><i class="icon-heart"></i></a>
+                                @if (Auth::guard('agent')->check())
+                                    <a class="add_wishlist addFavourite" data-id="{{ $sanPham->id }}"><i class="icon-heart"></i></a>
+                                @else
+                                    <a class="addFavourite" data-toggle="modal" data-target="#myModal"><i class="icon-heart"></i></a>
+                                @endif
                             </div>
                         </div>
                         <hr />
@@ -242,7 +246,12 @@
                                             @endif
                                             <li><a href="shop-compare.html"><i class="icon-shuffle"></i></a></li>
                                             <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                            <li><a href="#"><i class="icon-heart"></i></a></li>
+                                            @if (Auth::guard('agent')->check())
+                                                <li><a class="addFavourite" data-id="{{ $value->id }}"><i class="icon-heart"></i></a></li>
+                                            @else
+                                                <li><a class="addFavourite"  data-toggle="modal" data-target="#myModal"><i class="icon-heart"></i></a></li>
+                                            @endif
+
                                         </ul>
                                     </div>
                                 </div>

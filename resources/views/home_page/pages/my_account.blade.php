@@ -74,7 +74,7 @@
                                                         <tr>
                                                             <td>{{ $key + 1 }}</td>
                                                             <td>{{ $value->ma_don_hang }}</td>
-                                                            <td>{{ $value->created_at }}</td>
+                                                            <td>{{ Carbon\Carbon::parse($value->created_at)-> format('H:i:s d-m-y') }}</td>
                                                             <td>{{ $value->thuc_tra }}</td>
                                                             <td><a class="btn btn-fill-out btn-sm" data-toggle="modal" data-target="#myAccount">View</a></td>
                                                         </tr>
