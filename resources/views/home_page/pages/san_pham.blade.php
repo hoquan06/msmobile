@@ -56,8 +56,8 @@
                                                 @else
                                                     <li class="addToCart" data-toggle="modal" data-target="#myModal"><a class="icon-basket-loaded"><i class="icon-basket-loaded"></i> Thêm vào giỏ hàng</a></li>
                                                 @endif
-                                                <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                                <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+                                                {{-- <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
+                                                <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li> --}}
                                                 @if (Auth::guard('agent')->check())
                                                     <li><a class="addFavourite" data-id="{{ $value->id }}"><i class="icon-heart"></i></a></li>
                                                 @else
@@ -97,8 +97,8 @@
                                                 @else
                                                     <li class="add-to-cart addToCart" data-toggle="modal" data-target="#myModal"><a class="icon-basket-loaded"> Thêm vào giỏ hàng</a></li>
                                                 @endif
-                                                <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                                <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+                                                {{-- <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
+                                                <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li> --}}
                                                 @if (Auth::guard('agent')->check())
                                                     <li><a class="addFavourite" data-id="{{ $value->id }}"><i class="icon-heart"></i></a></li>
                                                 @else
