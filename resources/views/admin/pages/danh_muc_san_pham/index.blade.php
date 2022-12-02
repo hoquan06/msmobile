@@ -95,7 +95,7 @@
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" id="accpectDelete" class="btn btn-danger" data-dismiss="modal">Xóa Danh Mục</button>
+            <button type="button" id="acceptDelete" class="btn btn-danger" data-dismiss="modal">Xóa Danh Mục</button>
             </div>
         </div>
         </div>
@@ -143,7 +143,7 @@
             </div>
             <div class="modal-footer">
             <button type="button" id="closeModalUpdate" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" id="accpectUpdate" class="btn btn-success">Cập Nhật Danh Mục</button>
+            <button type="button" id="acceptUpdate" class="btn btn-success">Cập Nhật Danh Mục</button>
             </div>
         </div>
         </div>
@@ -264,7 +264,7 @@
                 $("#idDeleteDanhMuc").val(getId);
             });
 
-            $("#accpectDelete").click(function(){
+            $("#acceptDelete").click(function(){
                 var id = $("#idDeleteDanhMuc").val();
                 $.ajax({
                     url     :   '/admin/danh-muc-san-pham/delete/' + id,
@@ -303,7 +303,7 @@
                 });
             });
 
-            $("#accpectUpdate").click(function(){
+            $("#acceptUpdate").click(function(){
                 var val_ten_danh_muc    = $("#ten_danh_muc_edit").val();
                 var val_slug_danh_muc   = $("#slug_danh_muc_edit").val();
                 var val_hinh_anh        = $("#hinh_anh_edit").val();
