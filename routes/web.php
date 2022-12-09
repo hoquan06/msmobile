@@ -62,6 +62,11 @@ Route::group(['prefix' => '/admin'], function() {
         Route::get('/doi-trang-thai/{id}', [\App\Http\Controllers\QuanLyTaiKhoanController::class, 'doiTrangThai']);
     });
 
+    Route::group(['prefix' => '/don-hang'], function(){
+        Route::get('/index', [\App\Http\Controllers\DonHangController::class, 'index']);
+        Route::get('/delete/{id}', [\App\Http\Controllers\DonHangController::class, 'destroy']);
+    });
+
 });
 Route::group(['prefix' => '/agent'], function(){
     Route::get('/register', [\App\Http\Controllers\AgentController::class, 'register']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agent;
 use App\Models\ChiTietDonHang;
 use App\Models\DonHang;
 use App\Models\SanPham;
@@ -11,7 +12,8 @@ use Illuminate\Support\Str;
 
 class DonHangController extends Controller
 {
-    public function billDone(){
+    public function billDone()
+    {
         return view('home_page.pages.billDone');
     }
 
@@ -63,5 +65,27 @@ class DonHangController extends Controller
             }
         }
         return response()->json(['status' => false]);
+    }
+
+    public function index()
+    {
+        // $donHang = DonHang::join('agents', 'don_hangs.agent_id', 'agents.id')->get();
+        $donHang = Agent::join('don_hangs', 'agents.id', 'don_hangs.agent_id')->get();
+        return view('admin.pages.don_hang.index', compact('donHang'));
+    }
+
+    public function destroy($id)
+    {
+        $donHang = DonHang::find($id);
+        if($donHang){
+            $donHang->delete();
+            return response()->json([
+                'status'    => true,
+            ]);
+        }else{
+            return response()->json([
+                'status'    => false,
+            ]);
+        }
     }
 }

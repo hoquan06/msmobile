@@ -93,17 +93,17 @@
                 <div class="card-body"><h5 class="card-title">Danh Sách Sản Phẩm</h5>
                     <table class="mb-0 table table-bordered" id="tableSanPham">
                         <thead>
-                        <tr>
-                            <th class="text-nowrap text-center">#</th>
-                            <th class="text-nowrap text-center">Tên Sản Phẩm</th>
-                            <th class="text-nowrap text-center">Slug Sản Phẩm</th>
-                            <th class="text-nowrap text-center">Giá Bán</th>
-                            <th class="text-nowrap text-center">Giá Khuyến Mãi</th>
-                            <th class="text-nowrap text-center">Ảnh đại diện</th>
-                            <th class="text-nowrap text-center">Tình Trạng</th>
-                            <th class="text-nowrap text-center">Danh Mục</th>
-                            <th class="text-nowrap text-center">Action</th>
-                        </tr>
+                            <tr>
+                                <th class="text-nowrap text-center">#</th>
+                                <th class="text-nowrap text-center">Tên Sản Phẩm</th>
+                                <th class="text-nowrap text-center">Slug Sản Phẩm</th>
+                                <th class="text-nowrap text-center">Giá Bán</th>
+                                <th class="text-nowrap text-center">Giá Khuyến Mãi</th>
+                                <th class="text-nowrap text-center">Ảnh đại diện</th>
+                                <th class="text-nowrap text-center">Tình Trạng</th>
+                                <th class="text-nowrap text-center">Danh Mục</th>
+                                <th class="text-nowrap text-center">Action</th>
+                            </tr>
                         </thead>
                         <tbody class="text-nowrap text-center">
 
