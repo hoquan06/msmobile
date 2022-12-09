@@ -102,7 +102,7 @@
                             toastr.success("Bạn đã đăng kí tài khoản thành công.Vui lòng kiểm tra Email để kích hoạt tài khoản!!!");
                             setTimeout(function(){
                                 $(location).attr('href','/agent/login');
-                            }, 2000);
+                            }, 4000);
                         }
                     },
                     error   :   function(res) {
@@ -189,17 +189,21 @@
                     })
             });
 
+            var row;
+
             $(".removeFavourite").click(function(){
                 var san_pham_id = $(this).data('id');
                 var payload = {
                     'san_pham_id'   : san_pham_id,
                     'so_luong'      : 1,
                 };
+                row = $(this).closest('tr');
                 axios
                     .post('/agent/remove-favourite', payload)
                     .then((res) => {
                         if(res.data.status == 0){
                             toastr.success("Đã xóa sản phẩm yêu thích!");
+                            row.remove();
                         }else if(res.data.status == 1){
                             toastr.error("Không tìm thấy sản phẩm!");
                         }else{

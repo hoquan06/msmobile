@@ -75,8 +75,9 @@
                                                             <td>{{ $key + 1 }}</td>
                                                             <td>{{ $value->ma_don_hang }}</td>
                                                             <td>{{ Carbon\Carbon::parse($value->created_at)-> format('H:i:s d-m-y') }}</td>
-                                                            <td>{{ $value->thuc_tra }}</td>
-                                                            <td><a class="btn btn-fill-out btn-sm" data-toggle="modal" data-target="#myAccount">View</a></td>
+                                                            <td>{{ number_format($value->thuc_tra) }}</td>
+                                                            {{-- <td><a class="btn btn-fill-out btn-sm view" data-id="{{ $value->id }}" data-toggle="modal" data-target="#myAccount">Xem</a></td> --}}
+                                                            <td><a class="btn btn-fill-out btn-sm" href="/agent/myaccount/viewBill/{{ $value->id }}">Xem</a></td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
@@ -112,18 +113,6 @@
                                                     <label>Địa Chỉ <span class="required">*</span></label>
                                                     <input type="text" name="dia_chi" id="dia_chi" required="" class="form-control" value="{{ Auth::guard('agent')->user()->dia_chi }}">
                                                 </div>
-                                                {{-- <div class="form-group col-md-12">
-                                                    <label>Mật Khẩu Mới <span class="required">*</span></label>
-                                                    <input class="form-control" name="password" type="password" id="password">
-                                                </div> --}}
-                                                {{-- <div class="form-group col-md-12">
-                                                    <label>Mật Khẩu Mới <span class="required">*</span></label>
-                                                    <input class="form-control" required="" type="password" id="password">
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label>Nhập Lại Mật Khẩu<span class="required">*</span></label>
-                                                    <input class="form-control" required="" type="password" id="password">
-                                                </div> --}}
                                                 <div class="col-md-12">
                                                     <button  class="btn btn-fill-out" type="submit" value="Submit">Cập nhật</button>
                                                 </div>
@@ -140,11 +129,11 @@
         </div>
     </div>
 @endsection
-<div class="modal fade" id="myAccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+{{-- <div class="modal fade" id="myAccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content" >
         <div class="modal-header text-center">
-          <h5 >Thông tin cá nhân</h5>
+          <h5 >Thông tin đơn hàng</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -181,6 +170,6 @@
         </div>
     </div>
 </div>
-</div>
+</div> --}}
 
 

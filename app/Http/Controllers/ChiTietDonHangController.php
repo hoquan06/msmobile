@@ -7,6 +7,9 @@ use App\Models\SanPham;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AddToCartRequest;
+use App\Models\Agent;
+use App\Models\DonHang;
+use Illuminate\Support\Facades\DB;
 
 class ChiTietDonHangController extends Controller
 {
@@ -100,6 +103,25 @@ class ChiTietDonHangController extends Controller
                                             ->where('san_pham_id', $request->san_pham_id)
                                             ->first();
             $chiTietDonHang->delete();
+        }
+    }
+
+    public function viewBill($id)
+    {
+        $agent = Auth::guard('agent')->user();
+        if($agent){
+            $view = ChiTietDonHang::join('san_phams', 'chi_tiet_don_hangs.san_pham_id', 'san_phams.id')
+                                  ->where('agent_id', $agent->id)
+                                  ->where('don_hang_id', $id)
+                                  ->select('chi_tiet_don_hangs.*', 'san_phams.anh_dai_dien')
+                                  ->get();
+            $tongTien = DonHang::where('agent_id', $agent->id)
+                             ->where('id', $id)
+                             ->get();
+
+            return view('home_page.pages.viewBill.index', compact('view', 'tongTien'));
+        }else{
+
         }
     }
 }

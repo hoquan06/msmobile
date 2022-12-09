@@ -15,6 +15,7 @@
                                 <th class="text-nowrap text-center">Số điện thoại</th>
                                 <th class="text-nowrap text-center">Email</th>
                                 <th class="text-nowrap text-center">Địa Chỉ</th>
+                                <th class="text-nowrap text-center">Ngày tạo</th>
                                 <th class="text-nowrap text-center">Tình Trạng</th>
                                 <th class="text-nowrap text-center">Action</th>
                             </tr>
@@ -27,6 +28,7 @@
                                 <th class="text-nowrap text-center">{{ $value->so_dien_thoai }}</th>
                                 <th class="text-nowrap text-center">{{ $value->email }}</th>
                                 <th class="text-nowrap text-center">{{ $value->dia_chi }}</th>
+                                <th class="text-nowrap text-center">{{ Carbon\Carbon::parse($value->created_at)-> format('H:i:s d-m-y') }}</th>
                                 <th class="text-nowrap text-center">
                                     @if ($value->is_email == 1)
                                         <button class="btn btn-success">Đã xác thực</button>
@@ -40,6 +42,7 @@
                                     @else
                                         <button class="btn btn-danger doiTrangThai" data-id="{{ $value->id }}">Mở Khóa</button>
                                     @endif
+                                    <button class="btn btn-info" data-id="{{ $value->id }}">Xem thông tin</button>
                                     <button class="btn btn-danger delete" data-id_delete="{{ $value->id }}" data-toggle="modal" data-target="#deleteModal">Xóa</button>
                                 </th>
                             </tr>

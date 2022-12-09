@@ -28,7 +28,7 @@
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item mr-auto"><a class="navbar-brand" href="../../../html/ltr/vertical-menu-template/index.html"><span class="brand-logo">
+            <li class="nav-item me-auto"><a class="navbar-brand" href="../../../html/ltr/vertical-menu-template/index.html"><span class="brand-logo">
                         <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                             <defs>
                                 <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%" y2="89.4879456%">
@@ -52,15 +52,17 @@
                                 </g>
                             </g>
                         </svg></span>
-                    <h2 class="brand-text">Vuexy</h2>
+                    <h2 class="brand-text">MSMobile</h2>
                 </a></li>
-            <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a></li>
+            <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a></li>
         </ul>
     </div>
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Quản Lý MSMoBile</span><span class="badge badge-light-warning badge-pill ml-auto mr-1">3</span></a>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="/"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Trang Chủ</span><span class="badge badge-light-warning rounded-pill ms-auto me-1"></span></a>
+            </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Pages">Quản lý</span></a>
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="/admin/danh-muc-san-pham/index"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Danh Mục Sản Phẩm</span></a>
                     </li>
@@ -71,6 +73,10 @@
                     <li><a class="d-flex align-items-center" href="/admin/tai-khoan/index"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Tài khoản khách hàng</span></a>
                     </li>
                 </ul>
+            </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="/admin/tai-khoan/index"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="User">Tài khoản khách hàng</span></a>
+            </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="/admin/don-hang/index"><i data-feather="shopping-cart"></i><span class="menu-title text-truncate" data-i18n="eCommerce">Đơn hàng</span></a>
             </li>
         </ul>
     </div>

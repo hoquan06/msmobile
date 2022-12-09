@@ -67,16 +67,16 @@
                     <li><a href="/agent/favourite" class="nav-link"><i class="linearicons-heart"></i></a></li>
                     <li><a class="nav-link cart_trigger" href="/cart"><i class="linearicons-bag2"></i><span class="amount"></a>
                     @if (Auth::guard('agent')->check())
-                    <li>
-                        <a href="/agent/myaccount" class="nav-link"><i class="linearicons-user"></i>
-                            <span class="my-cart">
-                                <span>
-                                    <strong>{{ Auth::guard('agent')->user()->ho_va_ten }}</strong>
+                        <li>
+                            <a href="/agent/myaccount" class="nav-link"><i class="linearicons-user"></i>
+                                <span class="my-cart">
+                                    <span>
+                                        <strong>{{ Auth::guard('agent')->user()->ho_va_ten }}</strong>
+                                    </span>
                                 </span>
-                            </span>
-                            <li><a href="/agent/logout" class="nav-link"><i class="linearicons-exit"></i></a></li>
-                        </a>
-                    </li>
+                                <li><a href="/agent/logout" class="nav-link"><i class="linearicons-exit"></i></a></li>
+                            </a>
+                        </li>
                     @else
                         <li class="mr-2">
                             <a href="/agent/register"><i class="lnr lnr-user"></i>

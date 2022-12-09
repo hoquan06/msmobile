@@ -63,15 +63,23 @@ Route::group(['prefix' => '/admin'], function() {
     });
 
 });
-Route::get('/agent/register', [\App\Http\Controllers\AgentController::class, 'register']);
-Route::post('/agent/register', [\App\Http\Controllers\AgentController::class, 'registerAction']);
-Route::get('/agent/login', [\App\Http\Controllers\AgentController::class, 'login']);
-Route::post('/agent/login', [\App\Http\Controllers\AgentController::class, 'loginAction']);
-Route::get('/active/{hash}', [\App\Http\Controllers\AgentController::class, 'active']);
-Route::get('/agent/logout', [\App\Http\Controllers\AgentController::class, 'logout']);
+Route::group(['prefix' => '/agent'], function(){
+    Route::get('/register', [\App\Http\Controllers\AgentController::class, 'register']);
+    Route::post('/register', [\App\Http\Controllers\AgentController::class, 'registerAction']);
+    Route::get('/login', [\App\Http\Controllers\AgentController::class, 'login']);
+    Route::post('/login', [\App\Http\Controllers\AgentController::class, 'loginAction']);
+    Route::get('/active/{hash}', [\App\Http\Controllers\AgentController::class, 'active']);
+    Route::get('/logout', [\App\Http\Controllers\AgentController::class, 'logout']);
 
-Route::get('/agent/myaccount', [\App\Http\Controllers\AgentController::class, 'myaccount']);
-Route::post('/agent/update-myaccount', [\App\Http\Controllers\AgentController::class, 'updateMyaccount']);
+    Route::get('/myaccount', [\App\Http\Controllers\AgentController::class, 'myaccount']);
+    Route::post('/update-myaccount', [\App\Http\Controllers\AgentController::class, 'updateMyaccount']);
+
+    Route::get('/favourite', [\App\Http\Controllers\FavouriteController::class, 'index']);
+    Route::post('/add-favourite', [\App\Http\Controllers\FavouriteController::class, 'addFavourite']);
+    Route::post('/remove-favourite', [\App\Http\Controllers\FavouriteController::class, 'removeFavourite']);
+
+    Route::get('/myaccount/viewBill/{id}', [\App\Http\Controllers\ChiTietDonHangController::class, 'viewBill']);
+});
 
 Route::get('/', [\App\Http\Controllers\HomePageController::class, 'index']);
 Route::get('/san-pham/{id}', [\App\Http\Controllers\HomePageController::class, 'viewSanPham']);
@@ -87,6 +95,3 @@ Route::get('/bill-done', [\App\Http\Controllers\DonHangController::class, 'billD
 Route::get('/create-bill', [\App\Http\Controllers\DonHangController::class, 'store']);
 Route::post('/subscribe', [\App\Http\Controllers\SubscribeEmailController::class, 'create']);
 
-Route::get('/agent/favourite', [\App\Http\Controllers\FavouriteController::class, 'index']);
-Route::post('/agent/add-favourite', [\App\Http\Controllers\FavouriteController::class, 'addFavourite']);
-Route::post('/agent/remove-favourite', [\App\Http\Controllers\FavouriteController::class, 'removeFavourite']);

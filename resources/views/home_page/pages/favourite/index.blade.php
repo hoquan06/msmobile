@@ -42,8 +42,8 @@
                                             <td class="product-name" data-title="Product"><a href="#">{{ $value->ten_san_pham }}</a></td>
                                             <td class="product-price" data-title="Price">{{ number_format($value->don_gia,) }}</td>
                                             <td class="product-stock-status" data-title="Stock Status"><span class="badge badge-pill badge-success">Đang mở bán</span></td>
-                                            <td class="addToCart" data-id="{{ $value->id }}"><a class="btn btn-fill-out"><i class="icon-basket-loaded"></i> Thêm vào giỏ hàng</a></td>
-                                            <td class="product-remove removeFavourite" data-title="Remove"><a ><i class="ti-close"></i></a></td>
+                                            <td class="addToCart" data-id="{{ $value->san_pham_id }}"><a class="btn btn-fill-out"><i class="icon-basket-loaded"></i> Thêm vào giỏ hàng</a></td>
+                                            <td class="product-remove removeFavourite" data-id="{{ $value->san_pham_id }}" data-title="Remove"><a ><i class="ti-close"></i></a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

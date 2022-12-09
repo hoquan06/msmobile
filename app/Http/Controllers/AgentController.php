@@ -99,15 +99,15 @@ class AgentController extends Controller
         return redirect()->back();
     }
 
-    public function myaccount()
+    public function myaccount(Request $request)
     {
         $agent   = Auth::guard('agent')->user();
         if($agent){
             $bill = DonHang::where('agent_id', $agent->id)->get();
             $viewbill = ChiTietDonHang::join('san_phams', 'chi_tiet_don_hangs.san_pham_id', 'san_phams.id')
                                       ->where('agent_id', $agent->id)
-                                      ->where('is_cart',0)
-                                      ->where('don_hang_id', 'like', 27)
+                                      ->where('is_cart', 0)
+                                      ->where('don_hang_id', $request->don_hang_id)
                                       ->select('chi_tiet_don_hangs.*', 'san_phams.anh_dai_dien')
                                       ->get();
         }else{
