@@ -24,13 +24,15 @@ class HomePageController extends Controller
         $trending = "SELECT *, (gia_ban > 10000000) AS `TRENDING` FROM `san_phams` ORDER BY TRENDING DESC";
         $new_arrival = "SELECT *, (`gia_ban` - `gia_khuyen_mai` < 100000) AS `arrival` FROM `san_phams` ORDER BY arrival DESC";
         $gio = "SELECT * FROM `chi_tiet_don_hangs`";
+        $demgiohang = "SELECT COUNT(`san_pham_id`) AS sl FROM `chi_tiet_don_hangs` WHERE `so_luong` >= 1";
 
         $bestSeller = DB::select($sql);
         $arrival = DB::select($new_arrival);
         $sanPhamTrending = DB::select($trending);
         $gioHang = DB::select($gio);
+        $dem = DB::select($demgiohang);
 
-        return view('home_page.pages.home', compact('menuCha', 'menuCon', 'bestSeller','arrival', 'sanPhamTrending', 'gioHang'));
+        return view('home_page.pages.home', compact('menuCha', 'menuCon', 'bestSeller','arrival', 'sanPhamTrending', 'gioHang', 'dem'));
     }
 
     public function viewSanPham($id)
@@ -78,5 +80,12 @@ class HomePageController extends Controller
 
             return view('home_page.pages.san_pham', compact('sanPham'));
         }
+    }
+
+    public function search(Request $request){
+        $data = $request->search;
+
+        $list = SanPham::where('ten_san_pham', 'like', '%' . $data . '%')->get();
+        return view('home_page.pages.san_pham_search', compact('list'));
     }
 }

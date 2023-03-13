@@ -1,30 +1,3 @@
-{{-- <div class="scrollbar-sidebar">
-    <div class="app-sidebar__inner">
-        <ul class="vertical-nav-menu">
-            <li class="app-sidebar__heading text-center">QUẢN LÝ DANH MỤC</li>
-            <li>
-                <a href="http://127.0.0.1:8000/admin/danh-muc-san-pham/index" class="mm-active">
-                    <i class="metismenu-icon pe-7s-phone"></i>
-                    Danh Mục Sản Phẩm
-                </a>
-            </li>
-            <li>
-                <a href="http://127.0.0.1:8000/admin/san-pham/index" class="mm-active">
-                    <i class="metismenu-icon pe-7s-phone"></i>
-                    Sản Phẩm
-                </a>
-            </li>
-            <li>
-                <a href="http://127.0.0.1:8000/admin/nhap-kho/index" class="mm-active">
-                    <i class="metismenu-icon pe-7s-phone"></i>
-                    Nhập Kho
-                </a>
-            </li>
-        </ul>
-    </div>
-</div> --}}
-
-
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
@@ -69,8 +42,6 @@
                     <li><a class="d-flex align-items-center" href="/admin/san-pham/index"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Sản Phẩm</span></a>
                     </li>
                     <li><a class="d-flex align-items-center" href="/admin/nhap-kho/index"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Kho</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="/admin/tai-khoan/index"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Tài khoản khách hàng</span></a>
                     </li>
                 </ul>
             </li>

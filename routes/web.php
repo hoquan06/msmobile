@@ -68,6 +68,7 @@ Route::group(['prefix' => '/admin'], function() {
     });
 
 });
+
 Route::group(['prefix' => '/agent'], function(){
     Route::get('/register', [\App\Http\Controllers\AgentController::class, 'register']);
     Route::post('/register', [\App\Http\Controllers\AgentController::class, 'registerAction']);
@@ -89,6 +90,7 @@ Route::group(['prefix' => '/agent'], function(){
 Route::get('/', [\App\Http\Controllers\HomePageController::class, 'index']);
 Route::get('/san-pham/{id}', [\App\Http\Controllers\HomePageController::class, 'viewSanPham']);
 Route::get('/danh-muc/{id}', [\App\Http\Controllers\HomePageController::class, 'viewDanhMuc']);
+Route::post('/search', [\App\Http\Controllers\HomePageController::class, 'search']);
 
 Route::get('/cart', [\App\Http\Controllers\ChiTietDonHangController::class, 'index']);
 Route::post('/add-to-cart', [\App\Http\Controllers\ChiTietDonHangController::class, 'addToCart']);
@@ -99,4 +101,3 @@ Route::post('/remove-cart', [\App\Http\Controllers\ChiTietDonHangController::cla
 Route::get('/bill-done', [\App\Http\Controllers\DonHangController::class, 'billDone']);
 Route::get('/create-bill', [\App\Http\Controllers\DonHangController::class, 'store']);
 Route::post('/subscribe', [\App\Http\Controllers\SubscribeEmailController::class, 'create']);
-

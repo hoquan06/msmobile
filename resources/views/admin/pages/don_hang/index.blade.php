@@ -21,17 +21,17 @@
                     <tbody class="text-nowrap text-center">
                         @foreach ($donHang as $key=>$value)
                             <tr>
-                                <th>{{ $key + 1 }}</th>
-                                <th>{{ $value->ho_va_ten }}</th>
-                                <th>{{ $value->dia_chi }}</th>
-                                <th>{{ $value->ma_don_hang }}</th>
-                                <th>{{ Carbon\Carbon::parse($value->created_at)->format('H:i:s d/m/y') }}</th>
-                                <th>{{ $value->email }}</th>
-                                <th>Đang xử lý</th>
-                                <th>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $value->ho_va_ten }}</td>
+                                <td>{{ $value->dia_chi }}</td>
+                                <td>{{ $value->ma_don_hang }}</td>
+                                <td>{{ Carbon\Carbon::parse($value->created_at)->format('H:i:s d/m/y') }}</td>
+                                <td>{{ $value->email }}</td>
+                                <td>Đang xử lý</td>
+                                <td>
                                     <button class="btn btn-success" data-id="{{ $value->id }}">Xem</button>
                                     <button class="btn btn-danger delete" data-iddelete="{{ $value->id }}" data-toggle="modal" data-target="#deleteModal">Xóa</button>
-                                </th>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

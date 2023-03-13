@@ -23,20 +23,20 @@
                         <tbody class="text-nowrap text-center">
                             @foreach ($taiKhoan as $key=>$value)
                                 <tr>
-                                    <th class="text-nowrap text-center">{{ $key + 1 }}</th>
-                                    <th class="text-nowrap text-center">{{ $value->ho_va_ten }}</th>
-                                    <th class="text-nowrap text-center">{{ $value->so_dien_thoai }}</th>
-                                    <th class="text-nowrap text-center">{{ $value->email }}</th>
-                                    <th class="text-nowrap text-center">{{ $value->dia_chi }}</th>
-                                    <th class="text-nowrap text-center">{{ Carbon\Carbon::parse($value->created_at)-> format('H:i:s d/m/y') }}</th>
-                                    <th class="text-nowrap text-center">
+                                    <td class="text-nowrap text-center">{{ $key + 1 }}</td>
+                                    <td class="text-nowrap text-center">{{ $value->ho_va_ten }}</td>
+                                    <td class="text-nowrap text-center">{{ $value->so_dien_thoai }}</td>
+                                    <td class="text-nowrap text-center">{{ $value->email }}</td>
+                                    <td class="text-nowrap text-center">{{ $value->dia_chi }}</td>
+                                    <td class="text-nowrap text-center">{{ Carbon\Carbon::parse($value->created_at)-> format('H:i:s d/m/y') }}</td>
+                                    <td class="text-nowrap text-center">
                                         @if ($value->is_email == 1)
                                             <button class="btn btn-success">Đã xác thực</button>
                                         @else
                                             <button class="btn btn-danger">Chưa xác thực</button>
                                         @endif
-                                    </th>
-                                    <th class="text-nowrap text-center">
+                                    </td>
+                                    <td class="text-nowrap text-center">
                                         @if ($value->is_block == 0)
                                             <button class="btn btn-primary doiTrangThai" data-id="{{ $value->id }}">Khóa</button>
                                         @else
@@ -44,7 +44,7 @@
                                         @endif
                                         <button class="btn btn-info" data-id="{{ $value->id }}">Xem thông tin</button>
                                         <button class="btn btn-danger delete" data-id_delete="{{ $value->id }}" data-toggle="modal" data-target="#deleteModal">Xóa</button>
-                                    </th>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

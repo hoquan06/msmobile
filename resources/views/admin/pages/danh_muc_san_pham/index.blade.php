@@ -19,7 +19,7 @@
                         @endforeach
 
                     @endif --}}
-                    <form autocomplete="off">
+                    <form autocomplete="off" id="reset">
                         <div class="position-relative form-group">
                             <label>Tên Danh Mục</label>
                             <input id="ten_danh_muc" placeholder="Nhập vào tên danh mục" type="text" class="form-control">
@@ -39,7 +39,6 @@
                         <div class="position-relative form-group">
                             <label>Danh Mục Cha</label>
                             <select id="id_danh_muc_cha" class="form-control">
-                                <option value=0>Đóng Sản Phẩm</option>
                                 {{-- <option value="">Danh Mục Root</option>
                                     @foreach ($danh_muc_cha as $key => $value)
                                         <option value={{ $value->id }}>{{ $value->ten_danh_muc }}</option>
@@ -82,70 +81,70 @@
 @endsection
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title">Xóa Danh Mục Sản Phẩm</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Xóa Danh Mục Sản Phẩm</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa? Điều này không thể hoàn tác.
+                    <input type="text" class="form-control" placeholder="Nhập vào id cần xóa" id="idDeleteDanhMuc" hidden>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="acceptDelete" class="btn btn-danger" data-dismiss="modal">Xóa Danh Mục</button>
+                </div>
             </div>
-            <div class="modal-body">
-                Bạn có chắc chắn muốn xóa? Điều này không thể hoàn tác.
-                <input type="text" class="form-control" placeholder="Nhập vào id cần xóa" id="idDeleteDanhMuc" hidden>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" id="acceptDelete" class="btn btn-danger" data-dismiss="modal">Xóa Danh Mục</button>
-            </div>
-        </div>
         </div>
     </div>
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title">Chỉnh Sửa Danh Mục Sản Phẩm</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <div class="modal-body">
-                <input type="text" id="id_edit" hidden>
-                <div class="position-relative form-group">
-                    <label>Tên Danh Mục</label>
-                    <input id="ten_danh_muc_edit" placeholder="Nhập vào tên danh mục" type="text" class="form-control ten_danh_muc">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Chỉnh Sửa Danh Mục Sản Phẩm</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="position-relative form-group">
-                    <label>Slug Danh Mục</label>
-                    <input id="slug_danh_muc_edit" placeholder="Nhập vào slug danh mục" type="text" class="form-control slug_danh_muc">
-                </div>
-                <div class="position-relative form-group">
-                    <label>Hình Ảnh</label>
-                    <div class="input-group">
-                        <input id="hinh_anh_edit" class="form-control" type="text">
-                        <input type="button" class="btn-info lfm" data-input="hinh_anh_edit" data-preview="holder_edit" value="Chọn ảnh">
+                <div class="modal-body">
+                    <input type="text" id="id_edit" hidden>
+                    <div class="position-relative form-group">
+                        <label>Tên Danh Mục</label>
+                        <input id="ten_danh_muc_edit" placeholder="Nhập vào tên danh mục" type="text" class="form-control ten_danh_muc">
                     </div>
-                    <img id="holder_edit" style="margin-top:15px;max-height:100px;">
-                </div>
-                <div class="position-relative form-group">
-                    <label>Danh Mục Cha</label>
-                    <select id="id_danh_muc_cha_edit"class="form-control">
+                    <div class="position-relative form-group">
+                        <label>Slug Danh Mục</label>
+                        <input id="slug_danh_muc_edit" placeholder="Nhập vào slug danh mục" type="text" class="form-control slug_danh_muc">
+                    </div>
+                    <div class="position-relative form-group">
+                        <label>Hình Ảnh</label>
+                        <div class="input-group">
+                            <input id="hinh_anh_edit" class="form-control" type="text">
+                            <input type="button" class="btn-info lfm" data-input="hinh_anh_edit" data-preview="holder_edit" value="Chọn ảnh">
+                        </div>
+                        <img id="holder_edit" style="margin-top:15px;max-height:100px;">
+                    </div>
+                    <div class="position-relative form-group">
+                        <label>Danh Mục Cha</label>
+                        <select id="id_danh_muc_cha_edit"class="form-control">
 
-                    </select>
+                        </select>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label>Tình Trạng</label>
+                        <select id="is_open_edit"class="form-control">
+                            <option value=1>Đang Mở Bán</option>
+                            <option value=0>Đóng Sản Phẩm</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="position-relative form-group">
-                    <label>Tình Trạng</label>
-                    <select id="is_open_edit"class="form-control">
-                        <option value=1>Đang Mở Bán</option>
-                        <option value=0>Đóng Sản Phẩm</option>
-                    </select>
+                <div class="modal-footer">
+                    <button type="button" id="closeModalUpdate" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="acceptUpdate" class="btn btn-success">Cập Nhật Danh Mục</button>
                 </div>
             </div>
-            <div class="modal-footer">
-            <button type="button" id="closeModalUpdate" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" id="acceptUpdate" class="btn btn-success">Cập Nhật Danh Mục</button>
-            </div>
-        </div>
         </div>
     </div>
 @section('js')
@@ -220,6 +219,40 @@
             }
 
             loadTable();
+            $("#themMoiDanhMuc").click(function(e){
+                e.preventDefault();
+
+                var payload = {
+                    'ten_danh_muc'      :   $("#ten_danh_muc").val(),
+                    'slug_danh_muc'     :   $("#slug_danh_muc").val(),
+                    'hinh_anh'          :   $("#hinh_anh").val(),
+                    'id_danh_muc_cha'   :   $("#id_danh_muc_cha").val(),
+                    'is_open'           :   $("#is_open").val(),
+                };
+
+                $.ajax({
+                    url     :   '/admin/danh-muc-san-pham/index',
+                    type    :   'post',
+                    data    :    payload,
+                    success :    function(res) {
+                        toastr.success("Đã thêm mới danh mục thành công!!!");
+                        loadTable();
+                        // $('#reset').trigger("reset");
+                        $('#holder').attr('src', '');
+                        $("#ten_danh_muc").val('');
+                        $("#slug_danh_muc").val('');
+                        $("#hinh_anh").val('');
+                        $("#id_danh_muc_cha").val('');
+                        $("#is_open").val('');
+                    },
+                    error   :    function(res) {
+                        var danh_sach_loi = res.responseJSON.errors;
+                        $.each(danh_sach_loi, function(key, value){
+                            toastr.error(value[0]);
+                        });
+                    }
+                });
+            });
             $("#ten_danh_muc").keyup(function(){
                 var tenDanhMuc = $("#ten_danh_muc").val();
                 var slugDanhMuc = toSlug(tenDanhMuc);
@@ -241,8 +274,6 @@
                     success :     function(res) {
                         if(res.trangThai) {
                             toastr.success('Đã đổi trạng thái thành công!');
-                            // Tình trạng mới là true
-                            // loadTable();
                             if(res.tinhTrangDanhMuc == true){
                                 self.html('Đang Mở Bán');
                                 self.removeClass('btn-danger');
@@ -296,7 +327,7 @@
                         } else {
                             toastr.error('Danh mục sản phẩm không tồn tại!');
                             window.setTimeout(function() {
-                                $('#closeModal').click();
+                                $('#closeModalUpdate').click();
                             }, 1000 );
                         }
                     },
@@ -341,40 +372,7 @@
                     },
                 });
             });
-            $("#themMoiDanhMuc").click(function(e){
-                e.preventDefault();
 
-                var payload = {
-                    'ten_danh_muc'      :   $("#ten_danh_muc").val(),
-                    'slug_danh_muc'     :   $("#slug_danh_muc").val(),
-                    'hinh_anh'          :   $("#hinh_anh").val(),
-                    'id_danh_muc_cha'   :   $("#id_danh_muc_cha").val(),
-                    'is_open'           :   $("#is_open").val(),
-                };
-
-                $.ajax({
-                    url     :   '/admin/danh-muc-san-pham/index',
-                    type    :   'post',
-                    data    :    payload,
-                    success :    function(res) {
-                        toastr.success("Đã thêm mới danh mục thành công!!!");
-                        loadTable();
-                        // $('#createDanhMuc').trigger("reset");
-                        $('#holder').attr('src', '');
-                        $("#ten_danh_muc").val('');
-                        $("#slug_danh_muc").val('');
-                        $("#hinh_anh").val('');
-                        $("#id_danh_muc_cha").val('');
-                        $("#is_open").val('');
-                    },
-                    error   :    function(res) {
-                        var danh_sach_loi = res.responseJSON.errors;
-                        $.each(danh_sach_loi, function(key, value){
-                            toastr.error(value[0]);
-                        });
-                    }
-                });
-            });
         });
     </script>
 @endsection

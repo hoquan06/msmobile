@@ -46,7 +46,8 @@
                     <img class="logo_dark" src="/assets/images/logo_dark.png" alt="logo">
                 </a>
                 <div class="product_search_form radius_input search_form_btn">
-                    <form>
+                    <form action="/search" method="post">
+                        @csrf
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="custom_select">
@@ -58,14 +59,14 @@
                                     </select>
                                 </div>
                             </div>
-                            <input class="form-control" placeholder="Nhập tên sản phẩm..." required="" type="text">
+                            <input class="form-control" name="search" placeholder="Nhập tên sản phẩm..." required="" type="text">
                             <button type="submit" class="search_btn3">Tìm Kiếm</button>
                         </div>
                     </form>
                 </div>
                 <ul class="navbar-nav attr-nav align-items-center">
                     <li><a href="/agent/favourite" class="nav-link"><i class="linearicons-heart"></i></a></li>
-                    <li><a class="nav-link cart_trigger" href="/cart"><i class="linearicons-bag2"></i><span class="amount"></a>
+                    <li><a class="nav-link cart_trigger" href="/cart"><i class="linearicons-cart"></i><span class="cart_count">*</span></a></li>
                     @if (Auth::guard('agent')->check())
                         <li>
                             <a href="/agent/myaccount" class="nav-link"><i class="linearicons-user"></i>

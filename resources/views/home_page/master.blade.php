@@ -72,6 +72,7 @@
                             toastr.warning("Bạn cần phải kích hoạt email");
                         } else {
                             toastr.error("Sai tên đăng nhập hoặc mật khẩu. Vui lòng kiểm tra lại!!!");
+                            $("#password").val('');
                         }
                     },
                     error   :   function(res) {

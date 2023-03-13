@@ -213,7 +213,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <fieldset class="form-group">
-                                        <label>Danh Mục</label>
+                                        <label>Tình trạng</label>
                                         <select id="is_open_edit" class="custom-select block">
                                             <option value=1>Đang Mở Bán</option>
                                             <option value=0>Đóng Sản Phẩm</option>
@@ -354,7 +354,6 @@
                 type    :   'post',
                 data    :   thongTinSanPhamCanTao,
                 success :   function(res) {
-                    console.log(res);
                     if(res.thongBao) {
                         loadTable();
                         $('#formCreate').trigger("reset");
@@ -371,7 +370,6 @@
                 }
             });
         });
-
 
         $('body').on('click', '.doiTrangThai', function(){
             var idSanPham = $(this).data('id');
@@ -459,9 +457,7 @@
                 'is_open'           :   val_is_open,
                 'id'                :   val_id,
             };
-            console.log(payload);
 
-            // Gửi payload lên trên back-end bằng con đường ajax
             $.ajax({
                 url     :   '/admin/san-pham/update',
                 type    :   'post',

@@ -95,7 +95,7 @@ class AgentController extends Controller
     public function logout()
     {
         Auth::guard("agent")->logout();
-        toastr()->success('Đăng xuất thành công!!!');
+        toastr()->success('Đã đăng xuất!!!', 'Thành công');
         return redirect()->back();
     }
 
