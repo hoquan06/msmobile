@@ -40,7 +40,6 @@ Route::group(['prefix' => '/admin'], function() {
         Route::get('/edit/{id}', [\App\Http\Controllers\SanPhamController::class, 'editSanPham']);
         Route::post('/update', [\App\Http\Controllers\SanPhamController::class, 'updateSanPham']);
 
-
         Route::post('/search', [\App\Http\Controllers\SanPhamController::class, 'search']);
     });
 
