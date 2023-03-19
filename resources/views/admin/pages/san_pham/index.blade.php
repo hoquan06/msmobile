@@ -91,7 +91,7 @@
         <div class="table-response">
             <div class="main-card mb-3 card">
                 <div class="card-body"><h5 class="card-title">Danh Sách Sản Phẩm</h5>
-                    <table class="mb-0 table table-bordered" id="tableSanPham">
+                    <table class="mb-0 table table-bordered table-hover" id="tableSanPham">
                         <thead>
                             <tr>
                                 <th class="text-nowrap text-center">#</th>
@@ -439,7 +439,6 @@
             var val_gia_khuyen_mai      = $("#gia_khuyen_mai_edit").val();
             var val_anh_dai_dien        = $("#anh_dai_dien_edit").val();
             var val_mo_ta_ngan          = $("#mo_ta_ngan_edit").val();
-            var val_mo_ta_chi_tiet      = $("#mo_ta_ngan_edit").val();
             var val_mo_ta_chi_tiet      = CKEDITOR.instances['mo_ta_chi_tiet_edit'].getData();
             var val_id_danh_muc         = $("#id_danh_muc_edit").val();
             var val_is_open             = $("#is_open_edit").val();
